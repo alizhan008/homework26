@@ -1,0 +1,22 @@
+[
+  {
+    "key":"1",
+    "value": "AAA,BBB,CCC"
+  },
+  {
+    "key": "John",
+    "value": "Rich"
+  },
+  {
+    "key": "5500",
+    "value": "number auto"
+  },
+  {
+    "key": "RFC",
+    "value": "235"
+  },
+  {
+    "key": "id132",
+    "value": "my id 132"
+  }
+]
