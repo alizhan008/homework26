@@ -19,7 +19,7 @@ public interface ConnectDataBase {
 
     void readNumberOfRecords();
 
-    void addRecDataBase();
+    void addRecDataBase(String key, String val);
 
     void updateValIndex();
 

@@ -12,8 +12,9 @@ public class Data {
         return key;
     }
 
-    public void setKey(String key) {
+    public Data setKey(String key) {
         this.key = key;
+        return null;
     }
 
     public String getValue() {

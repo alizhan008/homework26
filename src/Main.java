@@ -9,10 +9,10 @@ public class Main {
 //        data[3] = new Data("K4","AAA,2,01/01/2015");
 //        data[4] = new Data("K5","3,ZZZ,5623");
         ReadData readData = new ReadData();
-        Data[] dates1 = readData.dates;
-//        readData.readStringIndex(dates1,2);
-        for (Data d : readData.readDataBaseRecords(1,1)) {
-            System.out.println(d.getKey()+ d.getValue());
-        }
+//        readData.readDataBaseRecords(4,2);
+
+
+//        readData.readNumberOfRecords();
+        readData.addRecDataBase("пес","кот");
     }
 }
