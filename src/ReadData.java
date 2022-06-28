@@ -5,12 +5,10 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
 import java.util.Objects;
 
 public class ReadData implements ConnectDataBase {
-     Data[] dates = readFile();
-
+    public Data[] dates = readFile();
 
 
     @Override
@@ -34,8 +32,8 @@ public class ReadData implements ConnectDataBase {
 
 
     @Override
-    public void readStringIndex(Data[] dates, int index) {
-        System.out.printf("Считывание строки по индексу...%n Ответ: key: %s value: %s", dates[index].getKey(),dates[index].getValue());
+    public void readStringIndex(int index) {
+        System.out.printf("Считывание строки по индексу...%n Ответ: key: %s value: %s", dates[index].getKey(), dates[index].getValue());
     }
 
     @Override
@@ -46,25 +44,28 @@ public class ReadData implements ConnectDataBase {
             } else {
                 System.out.println("Элемент не найден!");
             }
+
         }
+
     }
 
     @Override
     public void readRecordKey(String key) {
         for (int i = 0; i < dates.length; i++) {
-            if (Objects.equals(dates[i].getKey(), key.toUpperCase())) {
-                    System.out.println("Элемент найден!" + dates[i].getKey());
-            } else {
+            if (Objects.equals(dates[i].getKey(), key)) {
+                System.out.println("Элемент найден!" + dates[i].getKey());
+            }else {
                 System.out.println("Элемент не найден!");
+                break;
             }
         }
     }
 
     @Override
     public Data[] readDataBaseRecords(int quantity, int startIndex) {
-        Data[] dates2 = new Data[quantity+1];
-        for (int i = 0; i < dates.length ; i++) {
-            if(i >= startIndex) {
+        Data[] dates2 = new Data[quantity + 1];
+        for (int i = 0; i < dates.length; i++) {
+            if (i >= startIndex) {
                 dates2[i] = dates[i];
             }
         }
@@ -73,20 +74,20 @@ public class ReadData implements ConnectDataBase {
 
     @Override
     public void readNumberOfRecords() {
-        System.out.printf("Количество записей в базе: %s",dates.length);
+        System.out.printf("Количество записей в базе: %s", dates.length);
     }
 
     @Override
     public void addRecDataBase(String key, String val) {
-        Data[] dates3 = new Data[5+1];
+        Data[] dates3 = new Data[5 + 1];
         for (int i = 0; i < dates.length; i++) {
             dates3[i] = dates[i];
-            dates3[5] = new Data(key,val);
+            dates3[5] = new Data(key, val);
         }
-        System.out.printf("Вы добавили запись: key: %s value: %s",dates3[5].getKey(),dates3[5].getValue());
+        System.out.printf("Вы добавили запись: key: %s value: %s", dates3[5].getKey(), dates3[5].getValue());
 
         for (Data d : dates3) {
-            System.out.printf("%nkey: %s value: %s",d.getKey(),d.getValue());
+            System.out.printf("%nkey: %s value: %s", d.getKey(), d.getValue());
         }
     }
 
@@ -113,23 +114,5 @@ public class ReadData implements ConnectDataBase {
 
         return GSON.fromJson(json, Data[].class);
     }
-
-    public static void writeFile(Data[] data) {
-        String json = GSON.toJson(data);
-        try {
-            byte[] arr = json.getBytes();
-            Files.write(PATH, arr);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public String toString() {
-        return "ReadData{" +
-                "dates=" + Arrays.toString(dates) +
-                '}';
-    }
-
 
 }

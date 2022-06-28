@@ -6,9 +6,7 @@ public interface ConnectDataBase {
 
     void testConnection();
 
-
-    void readStringIndex(Data[] dates, int index);
-
+    void readStringIndex(int index);
 
     void checkRecordKey(String key);
 
