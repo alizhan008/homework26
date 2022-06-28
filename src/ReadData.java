@@ -39,10 +39,12 @@ public class ReadData implements ConnectDataBase {
     @Override
     public void checkRecordKey(String key) {
         for (int i = 0; i < dates.length; i++) {
-            if (Objects.equals(dates[i].getKey(), key.toUpperCase())) {
+            if (Objects.equals(dates[i].getKey(), key)) {
                 System.out.println("Ёлемент найден!");
+                break;
             } else {
                 System.out.println("Ёлемент не найден!");
+                break;
             }
 
         }
@@ -53,7 +55,8 @@ public class ReadData implements ConnectDataBase {
     public void readRecordKey(String key) {
         for (int i = 0; i < dates.length; i++) {
             if (Objects.equals(dates[i].getKey(), key)) {
-                System.out.println("Ёлемент найден!" + dates[i].getKey());
+                System.out.println("Ёлемент найден!: " + dates[i].getKey());
+                break;
             }else {
                 System.out.println("Ёлемент не найден!");
                 break;

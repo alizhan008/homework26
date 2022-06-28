@@ -3,7 +3,6 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-
         Data[] data = new Data[5];
         data[0] = new Data("K1","AAA,BBB,CCC");
         data[1] = new Data("K2","AAA,BBB");
@@ -20,6 +19,17 @@ public class Main {
     public static void run(){
         ReadData readData = new ReadData();
         Scanner scn = new Scanner(System.in);
+        System.out.println("Выберите действие с БД:\n1-Открыть соединение с БД\n" +
+                "2-Закрыть соединение\n" +
+                "3-Протестить соединение\n" +
+                "4-Считать одну запись (строку) по индексу\n" +
+                "5-Проверить есть ли запись по такому-то ключу\n" +
+                "6-Считать одну запись по ключу\n" +
+                "7-Считать из базы некоторый набор записей\n" +
+                "8-Узнать количество записей в базе\n" +
+                "9-Добавить запись в базу\n" +
+                "10-Добавить запись в базу\n" +
+                "11-Обновить содержимое записи по ключу\n: ");
         switch (scn.nextInt()){
             case 1:
                 readData.openConnection();
@@ -34,14 +44,14 @@ public class Main {
                 readData.readStringIndex(1);
                 break;
             case 5:
-                Scanner scnr = new Scanner(System.in);
-                String keys1 = scnr.nextLine();
-                System.out.println("Введите ключ (пример: \"John\"):  ");
+                Scanner scnn = new Scanner(System.in);
+                System.out.println("Введите ключ (пример: \"1\"):  ");
+                String keys1 = scnn.nextLine();
                 readData.checkRecordKey(keys1);
                 break;
             case 6:
                 Scanner sc = new Scanner(System.in);
-                System.out.println("Введите значение (пример: \"id132\"):  ");
+                System.out.println("Введите значение (пример: \"1\"):  ");
                 String keys2 = sc.nextLine();
                 readData.readRecordKey(keys2);
                 break;
@@ -68,6 +78,5 @@ public class Main {
             default:
                 System.out.println("Вы ничего не выбрали");
         }
-
     }
 }
